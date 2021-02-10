@@ -38,7 +38,11 @@ class Database
             re = /{[a-zA-z]\w*}/
             sql = @sql.gsub(re) do |var_name_with_curlies|
                 var_name = var_name_with_curlies.sub(/\A{/, '').sub(/}\z/, '').to_sym
-                index = var_names.index(var_name) + 1
+                if var_names.index(var_name).nil?
+                    index = 1                    
+                else
+                    index = var_names.index(var_name) + 1
+                end
                 "$#{index}"
             end
 

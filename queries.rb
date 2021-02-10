@@ -5,6 +5,6 @@ QUERIES = {
 
     find_submission_by_name: %{
         select * from submissions
-        where name = '%s'
+        where name = {name}
     }
 }

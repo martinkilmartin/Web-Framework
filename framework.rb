@@ -7,7 +7,7 @@ class App
     request = Rack::Request.new(env)
     @routes.each do |route|
       content = route.match(request)
-      return [200, {'Content-Type' => 'text/plain'}, [content.to_s]] if content
+      return [200, {'Content-Type' => 'text/html'}, [content.to_s]] if content
     end
     [404, {}, ["Not found"]]
   end
